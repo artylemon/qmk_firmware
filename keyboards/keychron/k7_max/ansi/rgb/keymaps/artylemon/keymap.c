@@ -28,6 +28,18 @@
 #define HOME_L LALT_T(KC_L)
 #define HOME_SCLN RGUI_T(KC_SCLN)
 
+// Left-hand home row mods
+#define HOME_A LGUI_T(KC_A)
+#define HOME_S LALT_T(KC_S)
+#define HOME_9 LCTL_T(KC_9)
+#define HOME_0 LSFT_T(KC_0)
+
+// Right-hand home row numbers
+#define HOME_4 RSFT_T(KC_4)
+#define HOME_5 RCTL_T(KC_5)
+#define HOME_6 LALT_T(KC_6)
+#define HOME_MINS RGUI_T(KC_MINS)
+
 enum layers { MAC_BASE, WIN_BASE, MAC_FN1, WIN_FN1, FN2 };
 
 // clang-format off
@@ -37,14 +49,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,           KC_HOME,
      KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,            KC_ENT,            KC_PGUP,
      KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,                      KC_RSFT,  KC_UP,   KC_PGDN,
-     KC_LCTL,  KC_LOPTN, KC_LCMMD,                               KC_SPC,                                 KC_RCMMD,MO(MAC_FN1),MO(FN2), KC_LEFT,  KC_DOWN, KC_RGHT),
+     KC_LCTL,  KC_LGUI,  KC_LALT,                               KC_SPC,                        KC_RCMMD, MO(MAC_FN1),MO(FN2), KC_LEFT,  KC_DOWN, KC_RGHT),
 
 [WIN_BASE] = LAYOUT_ansi_68(
-     KC_ESC,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5, KC_6, KC_7,   KC_8,   KC_9,    KC_0,      KC_MINS, KC_EQL,  KC_BSPC,     KC_DEL,
-     KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T, KC_Y, KC_U,   KC_I,   KC_O,    KC_P,      KC_LBRC, KC_RBRC, KC_BSLS,     KC_HOME,
-     KC_CAPS,  HOME_A,   HOME_S,   HOME_D,   HOME_F,   KC_G, KC_H, HOME_J, HOME_K, HOME_L,  HOME_SCLN, KC_QUOT,        KC_ENT,        KC_PGUP,
-     KC_LSFT,  KC_Z,               KC_X,     KC_C,     KC_V, KC_B, KC_N,   KC_M,   KC_COMM, KC_DOT,    KC_SLSH,     KC_RSFT, KC_UP,   KC_PGDN,
-     KC_LCTL,  KC_LGUI,  KC_LALT,                                KC_SPC,                    KC_RALT,   MO(WIN_FN1), MO(FN2), KC_LEFT, KC_DOWN, KC_RGHT),
+     KC_ESC,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5, KC_6, KC_7,   KC_8,     KC_9,    KC_0,      KC_MINS, KC_EQL,         KC_BSPC,     KC_DEL,
+     KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T, KC_Y, KC_U,   KC_I,     KC_O,    KC_P,      KC_LBRC, KC_RBRC,   KC_BSLS,          KC_HOME,
+     KC_CAPS,  HOME_A,   HOME_S,   HOME_D,   HOME_F,   KC_G, KC_H, HOME_J, HOME_K,   HOME_L,  HOME_SCLN, KC_QUOT,            KC_ENT,           KC_PGUP,
+     KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B, KC_N, KC_M,   KC_COMM,  KC_DOT,  KC_SLSH,      KC_RSFT,                  KC_UP,   KC_PGDN,
+     KC_LCTL,  KC_LGUI,  KC_LALT,                            LT(FN2,KC_SPC)                   KC_RALT,   MO(WIN_FN1), MO(FN2), KC_LEFT, KC_DOWN, KC_RGHT),
 
 [MAC_FN1] = LAYOUT_ansi_68(
      KC_GRV,   KC_BRID,  KC_BRIU,  KC_MCTRL, KC_LNPAD, RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,            _______,
@@ -61,10 +73,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______,  _______,  _______,                                _______,                                _______,  _______,  _______,  _______,  _______,  _______),
 
 [FN2] = LAYOUT_ansi_68(
-     KC_TILD,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,            _______,
-     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
-     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,            _______,
-     _______,  _______,  _______,  _______,  _______,  BAT_LVL,  _______,  _______,  _______,  _______,  _______,                      _______,  _______,  _______,
+     _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,            _______,
+     _______,  KC_TILD, KC_SCLN,  KC_LBRC,  KC_RBRC,  _______,  _______,  KC_7,     KC_8,     KC_9,     _______,   _______,  _______,  _______,            _______,
+     _______,  KC_GRV,  KC_QUOT,  HOME_9,   HOME_0,   _______,  _______,  HOME_4,   HOME_5,   HOME_6,   HOME_MINS, _______,            _______,            _______,
+     _______,  KC_BSLS, KC_SLSH,  KC_COMMA, KC_DOT,   BAT_LVL,  KC_0,     KC_1,     KC_2,     KC_3,     KC_EQL,                        _______,  _______,  _______,
      _______,  _______,  _______,                                _______,                                _______,  _______,  _______,  _______,  _______,  _______),
 };
 
