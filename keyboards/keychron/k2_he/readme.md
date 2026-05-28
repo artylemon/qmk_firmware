@@ -12,9 +12,20 @@ A customizable 84 keys TKL hall effect keyboard.
 
 Make example for this keyboard (after setting up your build environment):
 
+    export PATH="$HOME/.local/share/qmk/bin:$PATH"
+
+    # Stock keymaps
     make keychron/k2_he/ansi:keychron
     make keychron/k2_he/iso:keychron
     make keychron/k2_he/jis:keychron
+
+    # Custom keymap implemented in this repo
+    make keychron/k2_he/ansi:artylemon
+    make keychron/k2_he/iso:artylemon
+
+    # Equivalent QMK CLI commands
+    qmk compile -kb keychron/k2_he/ansi -km artylemon
+    qmk compile -kb keychron/k2_he/iso -km artylemon
 
 Flashing example for this keyboard:
 
@@ -22,7 +33,30 @@ Flashing example for this keyboard:
     make keychron/k2_he/iso:keychron:flash
     make keychron/k2_he/jis:keychron:flash
 
-**Reset Key**: Disconnect the USB cable, toggle mode switch to "Cable", hold down the *Esc* key or reset button underneath space bar, then connect the USB cable.
+    # Flash custom keymap
+    make keychron/k2_he/ansi:artylemon:flash
+    make keychron/k2_he/iso:artylemon:flash
+
+    # Equivalent QMK CLI commands
+    qmk flash -kb keychron/k2_he/ansi -km artylemon
+    qmk flash -kb keychron/k2_he/iso -km artylemon
+
+### Custom keymap note (`artylemon`)
+
+Implemented at:
+
+- `keyboards/keychron/k2_he/ansi/keymaps/artylemon`
+- `keyboards/keychron/k2_he/iso/keymaps/artylemon`
+
+For ISO hardware, use the ISO target (`keychron/k2_he/iso:artylemon`) so Enter/Backslash keys map correctly.
+
+Behavior highlights:
+
+1. Mac/Win dual-base setup: Mac switch position uses a standard base layout, Win switch position uses a modified layout.
+2. Space layer-tap on the Win base (`LT(FN2, KC_SPC)`), with a right-hand numpad cluster on `FN2` aligned to `U I O` / `J K L` / `M , .`.
+3. Home row mods on the Win base (`A S D F` and `J K L ;`) with `TAPPING_TERM 200`.
+
+**Bootloader Activation (K2 HE)**: Disconnect the USB cable, toggle mode switch to "Cable", hold down the *Esc* key, then reconnect the USB cable while still holding *Esc*. You can also use the reset button underneath the space bar.
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
